@@ -33,15 +33,11 @@ jobs:
         run: |
           uv run pyinstaller WechatOpenDevTools.spec --clean
 
-      - name: Make zip artifact
-        run: |
-          Compress-Archive -Path dist\* -DestinationPath dist\WeChatOpenDevTools-Windows.zip
-
       - name: Upload exe artifact
         uses: actions/upload-artifact@v4
         with:
           name: WeChatOpenDevTools
-          path: dist\WeChatOpenDevTools-Windows.zip
+          path: dist\WeChatOpenDevTools.exe
 
       - name: Upload release
         uses: ncipollo/release-action@v1.20.0
@@ -50,4 +46,4 @@ jobs:
           removeArtifacts: true
           name: "WeChatOpenDevTools"
           tag: "v${{ github.run_number }}"
-          artifacts: "dist/WeChatOpenDevTools-Windows.zip"
+          artifacts: "dist/WeChatOpenDevTools.exe"

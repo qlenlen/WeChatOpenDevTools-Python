@@ -4,7 +4,7 @@ from PyInstaller.utils.hooks import collect_data_files
 
 pyfiglet_datas = collect_data_files("pyfiglet")
 
-datas = [
+datas = pyfiglet_datas + [
     ("configs/*.json", "configs"),
     ("scripts/*", "scripts"),
 ]
@@ -13,7 +13,7 @@ a = Analysis(
     ["main.py"],
     pathex=[],
     binaries=[],
-    datas=pyfiglet_datas + datas,
+    datas=datas,
     hiddenimports=["pyfiglet.fonts"],
     hookspath=[],
     hooksconfig={},
@@ -27,26 +27,20 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
+    a.binaries,
+    a.datas,
     [],
-    exclude_binaries=True,
     name="WechatOpenDevTools",
     debug=False,
     bootloader_ignore_signals=False,
-    strip=True,
+    strip=False,
     upx=True,
+    upx_exclude=[],
+    runtime_tmpdir=None,
     console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-)
-coll = COLLECT(
-    exe,
-    a.binaries,
-    a.datas,
-    strip=True,
-    upx=True,
-    upx_exclude=[],
-    name="WechatOpenDevTools",
 )
