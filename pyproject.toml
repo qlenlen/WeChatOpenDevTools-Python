@@ -8,4 +8,5 @@ dependencies = [
     "frida>=17.5.2",
     "psutil>=7.2.1",
     "pyfiglet>=1.0.4",
+    "pyinstaller>=6.18.0",
 ]

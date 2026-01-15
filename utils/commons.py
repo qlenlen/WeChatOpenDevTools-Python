@@ -2,7 +2,6 @@
 from utils.colors import Color
 from utils.wechatutils import WechatUtils
 import frida
-import sys
 import time
 import platform
 

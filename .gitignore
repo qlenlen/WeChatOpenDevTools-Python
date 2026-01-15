@@ -3,3 +3,5 @@ frida-example
 **/__pycache__
 .vscode
 .idea
+build/
+dist/
